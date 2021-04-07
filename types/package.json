@@ -1,6 +1,6 @@
 {
   "name": "@tdallau/types",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "build/index.js",
   "module": "build/index.es.js",
@@ -17,9 +17,12 @@
   "keywords": [
     "Types",
     "Option",
-    "Either"
+    "Either",
+    "Func",
+    "Action"
   ],
   "author": "tdallau",
+  "repository": "https://github.com/Tdallau/npm-packages.git",
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^26.0.22",

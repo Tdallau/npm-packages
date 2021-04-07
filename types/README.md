@@ -3,7 +3,7 @@ Some examples are:
 ```ts
   const o1: Option<string> = {
     kind: 'some',
-    value: 'hallo'
+    value: 'hello i am an option value'
   }
 
   const o2: Option<string> = {

@@ -49,9 +49,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.0.11",
+  "version": "0.0.12",
   "gitHead": "125682122ed4b9b28df50119aafed1c92558bc45",
   "dependencies": {
-    "@tdallau/types": "^0.0.11"
+    "@tdallau/types": "^0.0.12"
   }
 }

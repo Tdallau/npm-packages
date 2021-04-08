@@ -1,6 +1,4 @@
-declare let Frame: any;
-declare type Frame = any;
-declare type ViewBase = any;
+import { Frame, ViewBase } from "@nativescript/core";
 
 export function getTopUiFrame(): Frame {
   return getParentFrame(Frame.topmost());

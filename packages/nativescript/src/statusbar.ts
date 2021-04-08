@@ -1,4 +1,4 @@
-declare let Application: any;
+import { Application } from "@nativescript/core";
 
 export type Animation = 'Fade' | 'Slide' | 'None';
 

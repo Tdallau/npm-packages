@@ -26,7 +26,7 @@ export class Http {
     this._saveHistory = saveHistory;
   }
 
-  private async request(method: 'POST' | 'GET', url: string, saveInHistory = this._saveHistory, headers: { [key: string] : string } | undefined = undefined, body: object | undefined = undefined) {
+  private async request(method: 'POST' | 'GET' | 'PUT' | 'DELETE', url: string, saveInHistory = this._saveHistory, headers: { [key: string] : string } | undefined = undefined, body: object | undefined = undefined) {
     const start = new Date().valueOf();
     const allHeaders = headers ? { ...this._headers, ...headers } : this._headers;
     if(this._debugging) console.log(`Sending request to ${url}`);
@@ -67,5 +67,15 @@ export class Http {
   public async get<T>(props: GetRequestProps): Promise<T> {
     const url = `${props.url || this._baseUrl}${props.target}`;
     return this.request('GET', url, props.saveInHistory ?? this._saveHistory, props.headers);
+  }
+
+  public async put<T>(props: PostRequestProps): Promise<T> {
+    const url = `${props.url || this._baseUrl}${props.target}`;
+    return this.request('PUT', url, props.saveInHistory ?? this._saveHistory, props.headers, props.body);
+  }
+
+  public async delete<T>(props: GetRequestProps): Promise<T> {
+    const url = `${props.url || this._baseUrl}${props.target}`;
+    return this.request('DELETE', url, props.saveInHistory ?? this._saveHistory, props.headers);
   }
 }

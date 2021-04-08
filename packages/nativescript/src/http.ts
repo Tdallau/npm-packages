@@ -1,5 +1,4 @@
-
-declare let request: any;
+import { request } from "@nativescript/core/http";
 
 type BaseRequestProps = {
   target: string;

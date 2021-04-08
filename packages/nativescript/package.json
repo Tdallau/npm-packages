@@ -50,6 +50,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@nativescript/core": "^8.0.1",
     "@tdallau/helpers": "^0.0.8"
   },
   "version": "0.0.8"

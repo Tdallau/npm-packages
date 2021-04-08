@@ -50,5 +50,8 @@
     "access": "public"
   },
   "version": "0.0.6",
-  "gitHead": "125682122ed4b9b28df50119aafed1c92558bc45"
+  "gitHead": "125682122ed4b9b28df50119aafed1c92558bc45",
+  "dependencies": {
+    "@tdallau/types": "^0.0.6"
+  }
 }

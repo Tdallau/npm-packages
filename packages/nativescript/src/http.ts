@@ -13,9 +13,7 @@ type GetRequestProps = BaseRequestProps;
 
 export class Http {
   private _baseUrl;
-  private _headers = {
-    'Content-Type': 'application/json'
-  }
+  private _headers = { 'Content-Type': 'application/json' };
   private _saveHistory: boolean;
   private _debugging: boolean;
   private _history: RequestHistory[] = [];

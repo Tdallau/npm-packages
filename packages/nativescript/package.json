@@ -1,7 +1,6 @@
 {
-  "name": "@tdallau/types",
-  "version": "0.0.7",
-  "description": "",
+  "name": "@tdallau/nativescript",
+  "description": "some helper functions for nativescript",
   "main": "build/index.js",
   "module": "build/index.es.js",
   "jsnext:main": "build/index.es.js",
@@ -50,7 +49,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "125682122ed4b9b28df50119aafed1c92558bc45",
   "dependencies": {
     "@tdallau/helpers": "^0.0.7"
   }

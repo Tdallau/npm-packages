@@ -1,6 +1,5 @@
 {
-  "name": "@tdallau/types",
-  "version": "0.0.4",
+  "name": "@tdallau/helpers",
   "description": "",
   "main": "build/index.js",
   "module": "build/index.es.js",
@@ -46,5 +45,6 @@
       "node_modules/",
       "build/"
     ]
-  }
+  },
+  "version": "0.0.4"
 }

@@ -11,3 +11,5 @@ export const rightEither = <Left,Right>(v:Right): Either<Left,Right> => ({ kind:
 
 export const promisify = <R>(exec: Func<[resolve: Func<[v:R], void>, reject: Func<string, void>],void>): Promise<R> => new Promise(exec);
 
+export const timer = (ms: number) => promisify((resolve, _reject) => setTimeout(resolve, ms));
+

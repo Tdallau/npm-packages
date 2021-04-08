@@ -20,4 +20,6 @@ Some examples are:
     }
     reject('somthing went wrong!!')
   })
+
+  await timer(2000 /* ms */);
 ```

@@ -45,9 +45,14 @@ export class Http {
   }
 
   private saveHistory(url: string, start: number, end: number, headers: { [key: string] : string } | undefined, body: object | undefined, response: HttpResponse) {
+    const success = response.statusCode >= 200 && response.statusCode < 300;
     this._history.push({
-      response,
-      responseSuccesStatus: response.statusCode >= 200 && response.statusCode < 300,
+      response: {
+        body: success ? response.content!.toJSON() : undefined,
+        headers: response.headers,
+        statusCode: response.statusCode
+      },
+      responseSuccesStatus: success,
       timePassed: (end - start) / 1000,
       url: url,
       requestHeaders: headers,

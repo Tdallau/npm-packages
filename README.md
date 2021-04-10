@@ -1,2 +1,2 @@
 # npm-packages
-mono repo for my nom packages
+mono repo for my npm packages

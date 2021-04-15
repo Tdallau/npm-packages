@@ -49,9 +49,9 @@ export class Http {
     let errBody = undefined;
     errBody = response.content?.toJSON();
     if(!errBody) {
-      throw new Error(`${method}: to ${url} went wrong`);
+      throw new Error(`${method} request to ${url} went wrong!\n status code: ${response.statusCode}`);
     }
-    throw new Error(`${method}: to ${url} went wrong: ${errBody.error}`);
+    throw new Error(`${method} request to ${url} went wrong: \n${errBody.Error || errBody.error}\n status code: ${response.statusCode}.`);
   }
 
   private saveHistory(url: string, start: number, end: number, headers: { [key: string] : string } | undefined, body: object | undefined, response: HttpResponse) {

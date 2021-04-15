@@ -46,6 +46,12 @@ export class Http {
     if(response.statusCode >= 200 && response.statusCode < 300) {
       return response.content!.toJSON();
     }
+    let errBody = undefined;
+    errBody = response.content?.toJSON();
+    if(!errBody) {
+      throw new Error(`${method}: to ${url} went wrong`);
+    }
+    throw new Error(`${method}: to ${url} went wrong: ${errBody.error}`);
   }
 
   private saveHistory(url: string, start: number, end: number, headers: { [key: string] : string } | undefined, body: object | undefined, response: HttpResponse) {

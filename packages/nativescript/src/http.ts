@@ -18,8 +18,12 @@ export class Http {
   private _debugging: boolean;
   private _history: RequestHistory[] = [];
 
-  public constructor(baseUrl: string, saveHistory: boolean = true, debugging: boolean = false) {
+  public constructor(baseUrl: string, baseHeaders: any = {}, saveHistory: boolean = true, debugging: boolean = false) {
     this._baseUrl = baseUrl;
+    this._headers = {
+      ...this._headers,
+      ...baseHeaders
+    }
     this._debugging = debugging;
     this._saveHistory = saveHistory;
   }

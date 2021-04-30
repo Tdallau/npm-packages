@@ -6,7 +6,7 @@ type BaseRequestProps = {
   headers?: { [key: string] : any };
   url?: string;
   saveInHistory?: boolean;
-  body: object
+  body?: object
 }
 
 type PostRequestProps = BaseRequestProps;

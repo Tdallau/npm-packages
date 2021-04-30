@@ -5,11 +5,12 @@ type BaseRequestProps = {
   target: string;
   headers?: { [key: string] : any };
   url?: string;
-  saveInHistory?: boolean
+  saveInHistory?: boolean;
+  body: object
 }
 
-type PostRequestProps = BaseRequestProps & { body: object }
-type GetRequestProps = BaseRequestProps;
+type PostRequestProps = BaseRequestProps;
+type GetRequestProps = BaseRequestProps & { query?: object };
 
 export class Http {
   private _baseUrl;
@@ -72,13 +73,34 @@ export class Http {
 
   public get history() { return this._history };
 
+  private createQueryString(query: object): string {
+    const keys = Object.keys(query);
+    let string = '';
+
+    for (let i = 0; i < keys.length; i++) {
+      const key = keys[i];
+      if(i !== 0) {
+        string += `&${key}=${query[key]}`;
+      } else {
+        string = `?${key}=${query[key]}`;
+      }
+      
+    }
+
+    return string;
+  }
+
   public async post<T>(props: PostRequestProps): Promise<T> {
     const url = `${props.url || this._baseUrl}${props.target}`;
     return this.request('POST', url,  props.saveInHistory ?? this._saveHistory, props.headers, props.body);
   }
 
   public async get<T>(props: GetRequestProps): Promise<T> {
-    const url = `${props.url || this._baseUrl}${props.target}`;
+    let qString = '';
+    if(props.query) {
+      qString = this.createQueryString(props.query);
+    }
+    const url = `${props.url || this._baseUrl}${props.target}${qString}`;
     return this.request('GET', url, props.saveInHistory ?? this._saveHistory, props.headers);
   }
 

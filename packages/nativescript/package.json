@@ -51,7 +51,7 @@
   },
   "dependencies": {
     "@nativescript/core": "^8.0.1",
-    "@tdallau/helpers": "^0.0.22"
+    "@tdallau/helpers": "^0.0.23"
   },
-  "version": "0.0.22"
+  "version": "0.0.23"
 }

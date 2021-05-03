@@ -43,8 +43,9 @@ export class Http {
     if(this._debugging) console.log(`the response status code is ${response.statusCode}`);
     if(this._saveHistory && saveInHistory) this.saveHistory(url, start, end, allHeaders, body, response);
 
-    if(response.statusCode >= 200 && response.statusCode < 300) {
-      return response.content!.toJSON();
+    const content = response?.content?.toJSON();
+    if(response.statusCode >= 200 && response.statusCode < 300 && ((content === undefined || content === null ) || content.success)) {
+      return content
     }
     let errBody = undefined;
     errBody = response.content?.toJSON();

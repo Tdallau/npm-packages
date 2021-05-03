@@ -6,10 +6,9 @@ type BaseRequestProps = {
   headers?: { [key: string] : any };
   url?: string;
   saveInHistory?: boolean;
-  body?: object
 }
 
-type PostRequestProps = BaseRequestProps;
+type PostRequestProps = BaseRequestProps & { body?: object };
 type GetRequestProps = BaseRequestProps & { query?: object };
 
 export class Http {
@@ -59,11 +58,11 @@ export class Http {
     const success = response.statusCode >= 200 && response.statusCode < 300;
     this._history.push({
       response: {
-        body: success ? response.content!.toJSON() : undefined,
+        body: response?.content?.toJSON(),
         headers: response.headers,
-        statusCode: response.statusCode
+        statusCode: response.statusCode,
+        success
       },
-      responseSuccesStatus: success,
       timePassed: (end - start) / 1000,
       url: url,
       requestHeaders: headers,
@@ -101,7 +100,7 @@ export class Http {
       qString = this.createQueryString(props.query);
     }
     const url = `${props.url || this._baseUrl}${props.target}${qString}`;
-    return this.request('GET', url, props.saveInHistory ?? this._saveHistory, props.headers, props.body);
+    return this.request('GET', url, props.saveInHistory ?? this._saveHistory, props.headers);
   }
 
   public async put<T>(props: PostRequestProps): Promise<T> {
@@ -111,6 +110,6 @@ export class Http {
 
   public async delete<T>(props: GetRequestProps): Promise<T> {
     const url = `${props.url || this._baseUrl}${props.target}`;
-    return this.request('DELETE', url, props.saveInHistory ?? this._saveHistory, props.headers, props.body);
+    return this.request('DELETE', url, props.saveInHistory ?? this._saveHistory, props.headers);
   }
 }

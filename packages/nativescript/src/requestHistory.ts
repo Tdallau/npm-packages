@@ -3,10 +3,10 @@ export type RequestHistory = {
   requestHeaders?: any;
   requestBody?: any;
   response: {
-    body?: any,
-    headers?: any,
-    statusCode: number
+    body?: any;
+    headers?: any;
+    statusCode: number;
+    success: boolean;
   };
-  responseSuccesStatus: boolean;
   timePassed: number;
 }

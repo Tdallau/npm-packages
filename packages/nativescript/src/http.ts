@@ -56,7 +56,7 @@ export class Http {
   }
 
   private saveHistory(url: string, start: number, end: number, headers: { [key: string] : string } | undefined, body: object | undefined, response: HttpResponse) {
-    const content = response?.content?.toJSON(),;
+    const content = response?.content?.toJSON();
     const success = response.statusCode >= 200 && response.statusCode < 300 && ((content === undefined || content === null ) || (content.success === true || content.success === undefined || content.success === null));
     this._history.push({
       response: {

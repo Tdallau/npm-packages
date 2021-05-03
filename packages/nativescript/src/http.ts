@@ -44,7 +44,10 @@ export class Http {
     if(this._saveHistory && saveInHistory) this.saveHistory(url, start, end, allHeaders, body, response);
 
     const content = response?.content?.toJSON();
-    if(response.statusCode >= 200 && response.statusCode < 300 && ((content === undefined || content === null ) || (content.httpStatus === undefined || content.httpStatus === null || content.httpStatus.success))) {
+    console.log(content);
+    console.log('full', response.statusCode >= 200 && response.statusCode < 300, ((content === undefined || content === null ) || (content.httpStatus === undefined || content.httpStatus === null || content.httpStatus.success === true)));
+    console.log('right', (content === undefined || content === null ), (content.httpStatus === undefined || content.httpStatus === null || content.httpStatus.success === true))
+    if(response.statusCode >= 200 && response.statusCode < 300 && ((content === undefined || content === null ) || (content.httpStatus === undefined || content.httpStatus === null || content.httpStatus.success === true))) {
       return content
     }
     let errBody = undefined;

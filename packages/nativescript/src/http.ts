@@ -44,7 +44,7 @@ export class Http {
     if(this._saveHistory && saveInHistory) this.saveHistory(url, start, end, allHeaders, body, response);
 
     const content = response?.content?.toJSON();
-    if(response.statusCode >= 200 && response.statusCode < 300 && ((content === undefined || content === null ) || content.success)) {
+    if(response.statusCode >= 200 && response.statusCode < 300 && ((content === undefined || content === null ) || (content.success === true || content.success === undefined || content.success === null))) {
       return content
     }
     let errBody = undefined;
@@ -56,10 +56,11 @@ export class Http {
   }
 
   private saveHistory(url: string, start: number, end: number, headers: { [key: string] : string } | undefined, body: object | undefined, response: HttpResponse) {
-    const success = response.statusCode >= 200 && response.statusCode < 300;
+    const content = response?.content?.toJSON(),;
+    const success = response.statusCode >= 200 && response.statusCode < 300 && ((content === undefined || content === null ) || (content.success === true || content.success === undefined || content.success === null));
     this._history.push({
       response: {
-        body: response?.content?.toJSON(),
+        body: content,
         headers: response.headers,
         statusCode: response.statusCode,
         success

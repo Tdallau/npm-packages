@@ -44,7 +44,7 @@ export class Http {
     if(this._saveHistory && saveInHistory) this.saveHistory(url, start, end, allHeaders, body, response);
 
     const content = response?.content?.toJSON();
-    if(response.statusCode >= 200 && response.statusCode < 300 && ((content === undefined || content === null ) || (content.success === true || content.success === undefined || content.success === null))) {
+    if(response.statusCode >= 200 && response.statusCode < 300 && ((content === undefined || content === null ) || (content.httpStatus === undefined || content.httpStatus === null || content.httpStatus.success))) {
       return content
     }
     let errBody = undefined;

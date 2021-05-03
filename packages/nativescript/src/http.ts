@@ -101,7 +101,7 @@ export class Http {
       qString = this.createQueryString(props.query);
     }
     const url = `${props.url || this._baseUrl}${props.target}${qString}`;
-    return this.request('GET', url, props.saveInHistory ?? this._saveHistory, props.headers);
+    return this.request('GET', url, props.saveInHistory ?? this._saveHistory, props.headers, props.body);
   }
 
   public async put<T>(props: PostRequestProps): Promise<T> {
@@ -111,6 +111,6 @@ export class Http {
 
   public async delete<T>(props: GetRequestProps): Promise<T> {
     const url = `${props.url || this._baseUrl}${props.target}`;
-    return this.request('DELETE', url, props.saveInHistory ?? this._saveHistory, props.headers);
+    return this.request('DELETE', url, props.saveInHistory ?? this._saveHistory, props.headers, props.body);
   }
 }
